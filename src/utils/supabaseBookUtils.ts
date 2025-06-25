@@ -5,7 +5,7 @@ import type { Book } from '../types/book';
 export async function uploadBookPhoto(file: File): Promise<string | null> {
   const fileExt = file.name.split('.').pop();
   const fileName = `${Date.now()}.${fileExt}`;
-  const { data, error } = await supabase.storage
+  const { error } = await supabase.storage
     .from('book-photos')
     .upload(fileName, file);
   if (error) {

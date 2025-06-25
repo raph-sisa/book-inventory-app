@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { BookStatus } from '../types/book';
 import { uploadBookPhoto, addBook } from '../utils/supabaseBookUtils';
-import { Button, ContentCard, ContentCardBody, Typography, Utility } from '@visa/nova-react';
+import { Button, Typography } from '@visa/nova-react';
 import { GenericFileUploadTiny } from '@visa/nova-icons-react';
 
 const statusOptions: BookStatus[] = ['unread', 'reading', 'read'];
@@ -38,7 +38,7 @@ const AddBookForm: React.FC = () => {
         if (!url) throw new Error('Photo upload failed');
         photo_url = url;
       }
-      const { id, error } = await addBook({
+      const { error } = await addBook({
         title,
         author,
         genre,
